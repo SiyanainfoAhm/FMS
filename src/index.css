@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-heading: 'Barlow', system-ui, -apple-system, sans-serif;
+  --font-body: 'Public Sans', system-ui, -apple-system, sans-serif;
+  --font-label: 'Barlow', system-ui, -apple-system, sans-serif;
+
+  /* background — quiet green-tinted neutral */
+  --background-50: 0.985 0.004 130;
+  --background-100: 0.968 0.006 130;
+  --background-200: 0.93 0.008 130;
+  --background-300: 0.885 0.01 130;
+  --background-400: 0.75 0.012 130;
+  --background-500: 0.62 0.014 130;
+  --background-600: 0.52 0.014 130;
+  --background-700: 0.42 0.013 130;
+  --background-800: 0.33 0.012 130;
+  --background-900: 0.25 0.01 130;
+  --background-950: 0.17 0.008 130;
+
+  /* primary — forest green */
+  --primary-50: 0.965 0.02 150;
+  --primary-100: 0.925 0.045 150;
+  --primary-200: 0.86 0.075 150;
+  --primary-300: 0.775 0.105 150;
+  --primary-400: 0.665 0.125 150;
+  --primary-500: 0.56 0.13 150;
+  --primary-600: 0.48 0.12 150;
+  --primary-700: 0.4 0.1 150;
+  --primary-800: 0.32 0.08 150;
+  --primary-900: 0.25 0.06 150;
+  --primary-950: 0.18 0.045 150;
+
+  /* accent — ochre / amber */
+  --accent-50: 0.975 0.02 82;
+  --accent-100: 0.945 0.05 82;
+  --accent-200: 0.9 0.09 82;
+  --accent-300: 0.845 0.12 82;
+  --accent-400: 0.785 0.145 82;
+  --accent-500: 0.72 0.155 82;
+  --accent-600: 0.625 0.145 82;
+  --accent-700: 0.525 0.125 82;
+  --accent-800: 0.42 0.1 82;
+  --accent-900: 0.33 0.08 82;
+  --accent-950: 0.23 0.055 82;
+
+  /* secondary — warm clay neutral */
+  --secondary-50: 0.965 0.008 45;
+  --secondary-100: 0.93 0.014 45;
+  --secondary-200: 0.875 0.022 45;
+  --secondary-300: 0.8 0.032 45;
+  --secondary-400: 0.695 0.042 45;
+  --secondary-500: 0.585 0.05 45;
+  --secondary-600: 0.495 0.048 45;
+  --secondary-700: 0.41 0.042 45;
+  --secondary-800: 0.325 0.036 45;
+  --secondary-900: 0.25 0.03 45;
+  --secondary-950: 0.175 0.022 45;
+
+  /* foreground — warm dark neutral */
+  --foreground-50: 0.96 0.005 150;
+  --foreground-100: 0.92 0.006 150;
+  --foreground-200: 0.85 0.008 150;
+  --foreground-300: 0.74 0.01 150;
+  --foreground-400: 0.6 0.011 150;
+  --foreground-500: 0.48 0.012 150;
+  --foreground-600: 0.4 0.012 150;
+  --foreground-700: 0.33 0.011 150;
+  --foreground-800: 0.27 0.01 150;
+  --foreground-900: 0.21 0.009 150;
+  --foreground-950: 0.15 0.008 150;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background-color: oklch(var(--background-200));
+  color: oklch(var(--foreground-900));
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-heading,
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+}
+
+@layer components {
+  /* Soft field backdrop that makes the frosted panels readable */
+  .app-canvas {
+    background-image: linear-gradient(
+      168deg,
+      oklch(var(--primary-200)) 0%,
+      oklch(var(--background-100)) 40%,
+      oklch(var(--background-100)) 62%,
+      oklch(var(--accent-100)) 100%
+    );
+  }
+
+  /* Frosted panel — default surface for cards and sections */
+  .glass-panel {
+    border: 1px solid oklch(var(--background-50) / 0.55);
+    background-color: oklch(var(--background-50) / 0.6);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    backdrop-filter: blur(18px) saturate(150%);
+  }
+
+  /* Stronger frost — used for sheets and dense content blocks */
+  .glass-strong {
+    border: 1px solid oklch(var(--background-50) / 0.7);
+    background-color: oklch(var(--background-50) / 0.84);
+    -webkit-backdrop-filter: blur(26px) saturate(165%);
+    backdrop-filter: blur(26px) saturate(165%);
+  }
+
+  /* Frosted bar — top headers and bottom navigation */
+  .glass-bar {
+    border-color: oklch(var(--background-50) / 0.5);
+    background-color: oklch(var(--background-50) / 0.72);
+    -webkit-backdrop-filter: blur(22px) saturate(165%);
+    backdrop-filter: blur(22px) saturate(165%);
+  }
+
+  /* Frosted inset field — inputs, selects, read-only blocks */
+  .glass-input {
+    border: 1px solid oklch(var(--background-50) / 0.72);
+    background-color: oklch(var(--background-50) / 0.5);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  /* Saturated frosted chip — accent moments that still read over any layer */
+  .glass-accent {
+    border: 1px solid oklch(var(--accent-500) / 0.35);
+    background-color: oklch(var(--accent-500) / 0.22);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  .glass-primary-fill {
+    border: 1px solid oklch(var(--primary-600) / 0.4);
+    background-color: oklch(var(--primary-700) / 0.92);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    backdrop-filter: blur(16px) saturate(150%);
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
